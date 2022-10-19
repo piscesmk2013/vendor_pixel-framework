@@ -14,7 +14,7 @@
         settings:controller="com.android.settings.gestures.SystemNavigationPreferenceController"
         settings:searchable="false" />
 
-    <Preference
+    <com.android.settingslib.PrimarySwitchPreference
         android:fragment="com.android.settings.gestures.OneHandedSettings"
         android:key="gesture_system_navigation_one_handed_accessibility"
         android:persistent="false"
