@@ -111,6 +111,13 @@
             android:title="@string/ambient_display_pickup_title"
             settings:controller="com.android.settings.gestures.PickupGesturePreferenceController"
             settings:searchable="false" />
+            settings:searchable="false" />
+
+        <Preference
+            android:key="pulse_ambient_light_settings"
+            android:title="@string/pulse_ambient_light_title"
+            android:summary="@string/pulse_ambient_light_summary"
+            android:fragment="com.android.settings.display.PulseAmbientLightSettings" />
 
         <SwitchPreference
             android:key="gesture_screen_off_udfps"
