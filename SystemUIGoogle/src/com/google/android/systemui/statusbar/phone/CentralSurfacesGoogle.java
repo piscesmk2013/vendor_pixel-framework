@@ -107,6 +107,7 @@ import com.android.systemui.statusbar.phone.StatusBarTouchableRegionManager;
 import com.android.systemui.statusbar.phone.dagger.CentralSurfacesComponent;
 import com.android.systemui.statusbar.phone.ongoingcall.OngoingCallController;
 import com.android.systemui.statusbar.policy.BatteryController;
+import com.android.systemui.statusbar.policy.BurnInProtectionController;
 import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController;
 import com.android.systemui.statusbar.policy.ExtensionController;
@@ -149,6 +150,9 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
     private final SysuiStatusBarStateController mStatusBarStateController;
     private final SmartSpaceController mSmartSpaceController;
     private final NotificationLockscreenUserManagerGoogle mNotificationLockscreenUserManagerGoogle;
+
+    // Burn-in protection
+    private final BurnInProtectionController mBurnInProtectionController;
 
     private long mAnimStartTime;
     private int mReceivingBatteryLevel;
@@ -255,7 +259,8 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
             KeyguardIndicationControllerGoogle keyguardIndicationControllerGoogle,
             TunerService tunerService,
             @Main Handler refreshNavbarHandler,
-            SysUiState sysUiState) {
+            SysUiState sysUiState,
+            BurnInProtectionController burnInProtectionController) {
         super(context, notificationsController, fragmentService, lightBarController,
                 autoHideController, statusBarWindowController, statusBarWindowStateController,
                 keyguardUpdateMonitor, statusBarSignalPolicy, pulseExpansionHandler,
@@ -286,7 +291,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
                 jankMonitor, deviceStateManager, wiredChargingRippleController,
                 dreamManager, cameraLauncherLazy, lightRevealScrimViewModelLazy,
                 alternateBouncerInteractor, userTracker, fingerprintManagerProvider,
-                tunerService, refreshNavbarHandler, sysUiState);
+                tunerService, refreshNavbarHandler, sysUiState, burnInProtectionController);
         mContext = context;
         mBatteryStateChangeCallback = new BatteryController.BatteryStateChangeCallback() {
             @Override
@@ -319,6 +324,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
         mReverseChargingViewControllerOptional = reverseChargingViewControllerOptional;
         mKeyguardIndicationController = keyguardIndicationControllerGoogle;
         mStatusBarStateController = statusBarStateController;
+        mBurnInProtectionController = burnInProtectionController;
         mWallpaperNotifier = wallpaperNotifier;
         mSmartSpaceController = smartSpaceController;
         mNotificationLockscreenUserManagerGoogle = notificationLockscreenUserManagerGoogle;
