@@ -101,6 +101,12 @@
         android:key="designed_battery_capacity"
         android:title="@string/designed_battery_capacity"
         android:selectable="false" />
+        
+    <com.android.settings.custom.preference.GlobalSettingSwitchPreference
+        android:key="strict_standby_policy"
+        android:title="@string/laboratory_strict_standby_policy_title"
+        android:summary="@string/laboratory_strict_standby_policy_summary"
+        android:defaultValue="false"/>
 
     <com.android.settingslib.widget.FooterPreference
         android:key="power_usage_footer"
