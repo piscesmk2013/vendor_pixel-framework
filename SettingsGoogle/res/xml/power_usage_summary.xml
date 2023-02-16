@@ -108,6 +108,11 @@
         android:summary="@string/laboratory_strict_standby_policy_summary"
         android:defaultValue="false"/>
 
+    <Preference
+        android:key="sleep_mode"
+        android:title="@string/sleep_mode_title"
+        android:fragment="com.android.settings.fuelgauge.sleepmode.SleepMode" />
+
     <com.android.settingslib.widget.FooterPreference
         android:key="power_usage_footer"
         android:selectable="false"
